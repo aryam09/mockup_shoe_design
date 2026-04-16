@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Champ's Shoe</title>
+  <!-- Styling the image, with image hotspots-->
+  <style>
+    body {
+      margin: 0;
+      font-family: "Times New Roman", Times, serif;
+      background: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    img {
+      max-width: 55%;
+      height: auto;
+    }
+
+    .container {
+      position: relative;
+      width: 600px;
+    }
+
+    .position {
+      position: absolute;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .position:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Highlight elements at these positions */
+    .sole { top: 12%; left: 27%; width: 80px; height: 80px; }
+    .laces { bottom: 8%; left: 48%; width: 80px; height: 220px; border-radius: 20px; transform: translate(-50%, -50%) rotate(25deg) }
+    .embroidery { top: 45%; left: 10%; width: 120px; height: 120px; }
+
+    .popup {
+      position: absolute;
+      bottom: 110%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ead5ca;
+      padding: 12px 16px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s;
+      width: 180px;
+      text-align: center;
+      font-size: 14px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .position.active .popup {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .title {
+      position: absolute;
+      color: #ead5ca;
+      top: -60px;
+      left: 0;
+      font-size: 28px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="title"><i>Redesigning Girlhood</i></div>
+
+    <img src="final_shoe.png" alt="Kid's shoe image" />
+
+    <div class="position laces" onclick="toggle(this)">
+      <div class="popup">Redefining their future one stitch at a time.</div>
+    </div>
+
+    <div class="position sole" onclick="toggle(this)">
+      <div class="popup">Champions have sole.</div>
+    </div>
+
+    <div class="position embroidery" onclick="toggle(this)">
+      <div class="popup">Ribbon lace as delicate as victory. </div>
+    </div>
+
+  </div>
+  <!--Change the elements state from hiddle to visible by adding the css active class-->
+  <!--Only toggle the text popups if the unique elements are selected-->
+  <script>
+    function toggle(el) {
+      document.querySelectorAll('.position').forEach(p => {
+        if (p !== el) p.classList.remove('active');
+      });
+      el.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
